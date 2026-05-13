@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-unused-vars": "off",
+    "typescript/no-unused-vars": "off",
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "react": { "version": "19.0.0" }
+  },
+  "overrides": [
+    {
+      "files": ["server/**/*.ts", "bin/**/*.ts", "scripts/**/*.ts"],
+      "env": { "node": true, "browser": false }
+    }
+  ]
+}

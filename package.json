@@ -1,0 +1,53 @@
+{
+  "name": "x-rank",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:vite": "vite",
+    "dev:static": "VITE_MODE=static vite",
+    "dev:live": "concurrently -n vite,server -c cyan,magenta \"VITE_USE_LIVE=true bun run dev:vite\" \"bun run dev:server\"",
+    "dev:server": "bun --watch server/index.ts",
+    "server": "bun server/index.ts",
+    "doctor": "bun scripts/doctor.ts",
+    "config": "bun scripts/config.ts",
+    "xrank": "bun bin/xrank.ts",
+    "refresh": "bun bin/xrank.ts refresh",
+    "export": "bun bin/xrank.ts export",
+    "publish": "bun bin/xrank.ts publish",
+    "cost": "bun bin/xrank.ts cost",
+    "status": "bun bin/xrank.ts status",
+    "build": "bun run typecheck && VITE_MODE=static vite build",
+    "preview": "vite preview",
+    "schedule:install": "bun scripts/install-local-scheduler.ts",
+    "schedule:uninstall": "bun scripts/install-local-scheduler.ts --uninstall",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.server.json",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check"
+  },
+  "dependencies": {
+    "@effect/atom-react": "4.0.0-beta.59",
+    "@effect/platform-bun": "4.0.0-beta.59",
+    "@effect/sql-sqlite-bun": "4.0.0-beta.59",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "effect": "4.0.0-beta.59",
+    "lucide-react": "^1.14.0",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
+    "scheduler": "^0.27.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.13",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "6.0.1",
+    "concurrently": "^9.0.0",
+    "oxfmt": "^0.49.0",
+    "oxlint": "^1.64.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.9"
+  }
+}
