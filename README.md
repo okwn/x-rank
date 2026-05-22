@@ -1,5 +1,8 @@
 # x-rank
 
+[![CI](https://github.com/okwn/x-rank/actions/workflows/ci.yml/badge.svg)](https://github.com/okwn/x-rank/actions/workflows/ci.yml)
+[![Bun](https://img.shields.io/badge/bun-%3E%3D1.3-brightgreen.svg)](https://bun.sh)
+
 A self-hostable X leaderboard. Pick a list of accounts, refresh their recent
 posts through the X API, export JSON snapshots, and deploy the React dashboard
 as a static site to any CDN.
