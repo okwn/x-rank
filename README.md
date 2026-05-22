@@ -210,3 +210,20 @@ for the static self-host path.
 - Keep `xrank.config.ts` as the user-editable setup surface.
 - `HttpApi` in `src/api.ts` is the live API contract.
 - `bun run typecheck` and `bun run build` are the checks.
+
+## Troubleshooting
+
+**`bun run doctor` fails with "X_BEARER_TOKEN not set"**
+Make sure `.env` exists and contains `X_BEARER_TOKEN=AAAA...`. The token starts with `AAAA`, not `xai-`.
+
+**`bun run refresh` hits rate limits quickly**
+Reduce `schedule.every` in `xrank.config.ts`. Each refresh batches calls per account; with many accounts, spread the interval. Run `bun run cost` to see recent usage.
+
+**Snapshots look stale**
+Run `bun run refresh --force` to bypass the refresh cache TTL. Check `bun run status` for last refresh timestamp.
+
+**`bun run export` produces no output**
+Ensure `data/snapshots.db` exists — export reads from the local DB, not the X API. Run `bun run refresh` first if the DB is empty.
+
+**Vercel deploy fails but local build works**
+`bun run publish` needs `X_BEARER_TOKEN` in the Vercel environment. Add it in the Vercel dashboard under Settings → Environment Variables. Do not add it to `.env` in the repo.
