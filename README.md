@@ -1,4 +1,5 @@
 # x-rank
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A self-hostable X leaderboard. Pick a list of accounts, refresh their recent
 posts through the X API, export JSON snapshots, and deploy the React dashboard
