@@ -205,6 +205,78 @@ There is also a Bun API server (`bun run server`) exposing `/api/snapshot` and
 `/api/refresh` over Effect HTTP for local/live experiments. It is not required
 for the static self-host path.
 
+## Development Guide
+
+### Prerequisites
+
+- [Bun](https://bun.sh) (not Node.js or pnpm)
+- A paid X API plan (Essential or above) for live refreshes
+
+### Initial Setup
+
+```sh
+# Clone and install dependencies
+bun install
+
+# Copy environment template
+cp .env.example .env
+# Edit .env: set X_BEARER_TOKEN (starts with AAAA, not xai-)
+
+# Validate your setup
+bun run doctor
+
+# Run type checks and build
+bun run typecheck
+bun run build
+```
+
+### Common Tasks
+
+```sh
+# Fake mode (mocked data, no network)
+bun run dev
+
+# Static mode (local development with exported snapshots)
+bun run dev:static
+
+# Live mode (development server with X API)
+bun run dev:live
+export X_BEARER_TOKEN=your_token_here
+
+# Refresh data manually
+bun run refresh
+
+# Export snapshots to public/
+bun run export
+
+# Type check and build
+bun run typecheck
+bun run build
+```
+
+### Project Structure
+
+| Path | Purpose |
+|------|---------|
+| `src/` | Shared types, React UI, and Effect Atom definitions |
+| `server/` | API server, SQLite persistence, X API integration |
+| `scripts/` | CLI tools for config and setup |
+| `xrank.config.ts` | User-editable roster configuration |
+
+### Adding New Accounts
+
+Edit `xrank.config.ts` directly, or use the roster editor:
+
+```sh
+bun run config -- set account1,account2,account3
+```
+
+### Troubleshooting
+
+- **Refresh fails with 401**: Ensure `X_BEARER_TOKEN` is set and starts with `AAAA`
+- **Empty leaderboard**: Run `bun run doctor` to validate your configuration
+- **Rate limit errors**: Reduce `REFRESH_INTERVAL` or wait for the in-client rate limiter
+
 ## Conventions
 
 - Use `bun` and `bunx`.
