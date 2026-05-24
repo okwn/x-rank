@@ -33,9 +33,9 @@ const ask = async (question: string, fallback: string) => {
 
 const shellEscape = (value: string) => `'${value.replace(/'/g, "'\\''")}'`
 
-const intervalSeconds = (input: string) => {
-  const millis = Duration.toMillis(Duration.fromInputUnsafe(input as Duration.Input))
-  if (!Number.isFinite(millis) || millis <= 0) throw new Error(`Invalid interval: ${input}`)
+const intervalSeconds = (intervalStr: string) => {
+  const millis = Duration.toMillis(Duration.fromInputUnsafe(intervalStr as Duration.Input))
+  if (!Number.isFinite(millis) || millis <= 0) throw new Error(`Invalid interval: ${intervalStr}`)
   return Math.max(60, Math.round(millis / 1000))
 }
 
