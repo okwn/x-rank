@@ -137,11 +137,11 @@ const initializeDb = (db: DbClient) =>
     yield* addColumnIfMissing(db, "refreshes", "est_cost_usd", "REAL NOT NULL DEFAULT 0")
   })
 
-const addColumnIfMissing = (db: DbClient, table: string, column: string, ddl: string): Effect.Effect<void> =>
+const addColumnIfMissing = (db: DbClient, table: string, columnn: string, ddl: string): Effect.Effect<void> =>
   Effect.gen(function* () {
     const cols = yield* db<{ name: string }>`PRAGMA table_info(${db.literal(table)})`.pipe(Effect.orDie)
-    if (cols.some((c) => c.name === column)) return
-    yield* db`ALTER TABLE ${db.literal(table)} ADD COLUMN ${db.literal(column)} ${db.literal(ddl)}`.pipe(Effect.orDie)
+    if (cols.some((c) => c.name === columnn)) return
+    yield* db`ALTER TABLE ${db.literal(table)} ADD COLUMN ${db.literal(columnn)} ${db.literal(ddl)}`.pipe(Effect.orDie)
   })
 
 export const DbLive = Layer.unwrap(

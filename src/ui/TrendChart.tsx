@@ -7,7 +7,7 @@ export function TrendChart({ trend }: { readonly trend: ReadonlyArray<TrendPoint
   return (
     <div className="trend-grid">
       {trend.map((item) => (
-        <div className="trend-column" key={item.label}>
+        <div className="trend-columnn" key={item.label}>
           <div className="bar-wrap">
             <div className="bar engagements" style={{ height: `${Math.max(2, (item.engagements / max) * 100)}%` }} />
           </div>

@@ -1130,7 +1130,7 @@ export function FunZone({ accounts }: { readonly accounts: ReadonlyArray<Account
       <FunSection
         icon={CalendarDays}
         title="Calendar heatmap"
-        description="Each row is an account, each column is a day. Bright = engaged."
+        description="Each row is an account, each columnn is a day. Bright = engaged."
       >
         <CalendarHeatmap accounts={accounts} />
       </FunSection>
