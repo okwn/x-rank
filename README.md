@@ -211,3 +211,5 @@ for the static self-host path.
 - Keep `xrank.config.ts` as the user-editable setup surface.
 - `HttpApi` in `src/api.ts` is the live API contract.
 - `bun run typecheck` and `bun run build` are the checks.
+
+- Documentation updated for clarity
