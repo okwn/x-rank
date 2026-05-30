@@ -33,3 +33,5 @@ bun run test          # (not yet implemented — coming soon)
 - **Schema for parsing at boundaries** — use Effect Schema for all wire types.
 - **No AI attribution in commits** — author your own commits.
 - **No test script** — use `bun run typecheck` and `bun run build` for verification.
+## Contributors
+- Documentation improvements (2026)
